@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { connect } from "react-redux";
+import { addSmurf } from "../actions";
 
 const SmurfForm = (props) => {
   // Use State to create a new smurf
   const [newSmurf, setNewSmurf] = useState({
-    smurf_name: "",
-    smurf_age: "",
-    smurf_height: "",
+    name: "",
+    age: 0,
+    height: "",
   });
   const handleSubmit = (event) => {
     event.preventDefault();
+    props.addSmurf(newSmurf);
     console.log(newSmurf);
   };
   // Handles changes in form and updates newSmurf state
@@ -24,35 +27,35 @@ const SmurfForm = (props) => {
       <h2>Add a smurf</h2>
       <Form onSubmit={(event) => handleSubmit(event)}>
         <FormGroup>
-          <Label for="smurf_name">Name</Label>
+          <Label for="name">Name</Label>
           <Input
             type="text"
-            name="smurf_name"
-            id="idSmurf_name"
+            name="name"
+            id="idname"
             placeholder="e.g. Britanny"
-            value={newSmurf.smurf_name}
+            value={newSmurf.name}
             onChange={(event) => handleChange(event)}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="smurf_age">Age</Label>
+          <Label for="age">Age</Label>
           <Input
-            type="text"
-            name="smurf_age"
-            id="idSmurf_age"
+            type="number"
+            name="age"
+            id="idage"
             placeholder="e.g. 65"
-            value={newSmurf.smurf_age}
+            value={newSmurf.age}
             onChange={(event) => handleChange(event)}
           />
         </FormGroup>
         <FormGroup>
-          <Label for="smurf_height">Height</Label>
+          <Label for="height">Height</Label>
           <Input
             type="text"
-            name="smurf_height"
-            id="idSmurf_height"
+            name="height"
+            id="idheight"
             placeholder="e.g. 5cm"
-            value={newSmurf.smurf_height}
+            value={newSmurf.height}
             onChange={(event) => handleChange(event)}
           ></Input>
         </FormGroup>
@@ -61,4 +64,9 @@ const SmurfForm = (props) => {
     </div>
   );
 };
-export default SmurfForm;
+export default connect(
+  () => {
+    return {};
+  },
+  { addSmurf }
+)(SmurfForm);

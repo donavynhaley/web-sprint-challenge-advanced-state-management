@@ -1,3 +1,26 @@
 .App {
   text-align: center;
+  color: white !important;
+}
+.content {
+  display: flex;
+  align-items: baseline;
+  margin: 2%;
+}
+.smurfContainer {
+  width: 50%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+.smurfContainer .smurf {
+  background-color: #222222;
+  margin: 1%;
+}
+#formContainer {
+  margin: 1%;
+  width: 50%;
+}
+.App h1 {
+  margin-bottom: 10%;
 }
